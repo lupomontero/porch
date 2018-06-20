@@ -1,5 +1,11 @@
 # Pact
 
+Process **promise-based** tasks in **series** and **parallel**, controlling
+**concurrency** and **throttling**.
+
+[![Build Status](https://travis-ci.com/lupomontero/pact.svg?branch=master)](https://travis-ci.com/lupomontero/pact)
+[![Coverage Status](https://coveralls.io/repos/lupomontero/pact/badge.svg?branch=master)](https://coveralls.io/r/lupomontero/pact?branch=master)
+
 ## Installation
 
 ```sh
