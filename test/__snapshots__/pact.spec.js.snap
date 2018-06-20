@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pact should not throttle when interval is not specified 1`] = `
+Array [
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    5,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    5,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    3,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    2,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    2,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    1,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    1,
+  ],
+]
+`;
+
+exports[`pact should process tasks in batches by concurrency 1`] = `
+Array [
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    5,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    5,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    3,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    2,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    2,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    1,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    1,
+  ],
+]
+`;
+
+exports[`pact should throttle batches by given interval 1`] = `
+Array [
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    9,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    9,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    5,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    3,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    3,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    1,
+  ],
+  Array [
+    Array [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+    ],
+    1,
+  ],
+]
+`;
