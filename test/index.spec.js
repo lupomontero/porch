@@ -1,4 +1,4 @@
-const { createDelayedPromise, createFailedDelayedPromise, timed } = require('./common');
+const { createDelayedPromise, createFailedDelayedPromise, timed } = require('./testUtils');
 const pact = require('../');
 
 
