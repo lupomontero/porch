@@ -26,5 +26,6 @@ module.exports = (tasks, concurrency, interval = 0, failFast = true) => {
 
 // Exclude `createStream` method in basic build for browsers.
 if (!process.env.PACT_NO_STREAMS) {
+  // eslint-disable-next-line global-require
   module.exports.createStream = require('./lib/createStream');
 }
