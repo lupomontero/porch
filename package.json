@@ -2,7 +2,6 @@
   "name": "pact",
   "version": "1.0.0",
   "main": "./index.js",
-  "browser": "./basic.js",
   "license": "MIT",
   "scripts": {
     "pretest": "eslint .",
