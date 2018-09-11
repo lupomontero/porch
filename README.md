@@ -34,23 +34,9 @@ npm install lupomontero/pact
 A `Promise` that will resolve to an array with the results for each _task_.
 Results will be in the same order as in the input _tasks_ array.
 
-<!--
-### `EventEmitter pact.emitter(tasks, concurrency, interval, failFast)`
+#### Examples
 
-#### Arguments
-
-#### Return value
-
-### `Stream pact.stream(tasks, concurrency, interval, failFast, streamOtions)`
-
-#### Arguments
-
-#### Return value
--->
-
-## Examples
-
-## Series
+##### Series
 
 Process each task after the other, sequentially. Each task will wait for the
 previous one to complete. Concurrency set to `1` (one task at a time).
@@ -64,7 +50,7 @@ pact(tasks)
   .catch(console.error);
 ```
 
-## Batches
+##### Batches
 
 Process _tasks_ in _batches_ based on a given _concurrency_. In this example
 _tasks_ will be processed in batches of 5 _tasks_ each. Each batch waits for the
@@ -76,7 +62,7 @@ pact(tasks, 5)
   .catch(console.error);
 ```
 
-## Throttled
+##### Throttled
 
 Same as example above but adding a 1000ms delay between batches.
 
@@ -86,7 +72,7 @@ pact(tasks, 5, 1000)
   .catch(console.error);
 ```
 
-## failFast=false (don't bail out on errors)
+##### failFast=false (don't bail out on errors)
 
 Same as above, but in this case if a promise fails, processing will continue
 instead of stopping the whole thing. When `failFast` is set to `false`, errors
@@ -96,11 +82,40 @@ will appear as the value/result for the relevant element in the results array
 ```js
 pact(tasks, 5, 1000, false)
   .then(console.log)
-  .catch(console.error);
+```
+
+### `stream.Readable pact.createStream(tasks, concurrency, interval, failFast)`
+
+#### Arguments
+
+Same as `pact()`.
+
+#### Return value
+
+A readable stream (`stream.Readable`) instead of a `Promise`. Each result will
+be emitted as a data event and the stream will operate in `objectMode`.
+
+#### Examples
+
+##### Handling each event independently... (old school)
+
+```js
+pact.createStream(tasks, 5, 1000, false)
+  .on('error', err => console.error('error', err))
+  .on('data', data => console.log('data', data))
+  .on('end', _ => console.log('ended!'));
+```
+
+##### Piping to a writable stream
+
+```js
+// This example assumes that tasks will resolve to string values so that the
+// resulting stream can be directly piped to stdout.
+pact.createStream(tasks, 5, 1000, false).pipe(process.stdout);
 ```
 
 <!--
-## EventEmitter
+### `EventEmitter pact.createEventEmitter(tasks, concurrency, interval, failFast)`
 
 ```js
 const { emitter } = require('pact');
@@ -110,19 +125,5 @@ emitter(tasks, 5, 1000, false)
   .on('data', data => console.log('data', data))
   .on('log', (level, message) => console[level](`${level}: ${message}`))
   .on('end', _ => console.log('ended!'));
-```
-
-## Stream
-
-```js
-const { stream } = require('pact');
-
-stream(tasks, 5, 1000, false, { objectMode: true })
-  .on('error', err => console.error('error', err))
-  .on('data', data => console.log('data', data))
-  .on('end', _ => console.log('ended!'));
-
-
-stream(tasks, 5, 1000, false).pipe(process.stdout);
 ```
 -->

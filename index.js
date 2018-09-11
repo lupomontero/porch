@@ -1,10 +1,4 @@
-const splitArrayIntoBatches = (arr, limit) => arr.reduce((memo, item) => {
-  if (memo.length && memo[memo.length - 1].length < limit) {
-    memo[memo.length - 1].push(item);
-    return memo;
-  }
-  return [...memo, [item]];
-}, []);
+const splitArrayIntoBatches = require('./lib/splitArrayIntoBatches');
 
 
 module.exports = (tasks, concurrency, interval = 0, failFast = true) => {
@@ -28,3 +22,9 @@ module.exports = (tasks, concurrency, interval = 0, failFast = true) => {
 
   return processBatches(splitArrayIntoBatches(tasks, concurrency));
 };
+
+
+// Exclude `createStream` method in basic build for browsers.
+if (!process.env.PACT_NO_STREAMS) {
+  module.exports.createStream = require('./lib/createStream');
+}
