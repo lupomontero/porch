@@ -20,7 +20,7 @@ describe('createStream', () => {
     ])
       .on('data', result => results.push(result))
       .on('end', () => {
-        expect(results).toEqual(['xxx', 'yyy']);
+        expect(results).toEqual([{ idx: 0, result: 'xxx' }, { idx: 1, result: 'yyy' }]);
         done();
       });
   });
@@ -34,6 +34,7 @@ describe('createStream', () => {
       .on('error', (err) => {
         expect(err instanceof Error).toBe(true);
         expect(err.message).toBe('Error: xxx');
+        expect(err.idx).toBe(0);
         done();
       });
   });
@@ -50,9 +51,45 @@ describe('createStream', () => {
         expect(onData.mock.calls.length).toBe(3);
         expect(onData.mock.calls[0].length).toBe(1);
         expect(onData.mock.calls[1].length).toBe(1);
-        expect(onData.mock.calls[0][0] instanceof Error).toBe(true);
-        expect(onData.mock.calls[1][0]).toBe('yyy');
-        expect(onData.mock.calls[2][0] instanceof Error).toBe(true);
+        expect(onData.mock.calls[2].length).toBe(1);
+        expect(onData.mock.calls[0][0].idx).toBe(0);
+        expect(onData.mock.calls[0][0].result instanceof Error).toBe(true);
+        expect(onData.mock.calls[1][0].idx).toBe(1);
+        expect(onData.mock.calls[1][0].result).toBe('yyy');
+        expect(onData.mock.calls[2][0].idx).toBe(2);
+        expect(onData.mock.calls[2][0].result instanceof Error).toBe(true);
+        done();
+      });
+  });
+
+  it('should maintain input indexes in results regardless of arrival time', (done) => {
+    const onData = jest.fn();
+    createStream([
+      () => createDelayedPromise(1, 20),
+      () => createDelayedPromise(2, 10),
+      () => createDelayedPromise(3, 20),
+      () => createDelayedPromise(4, 10),
+      () => createDelayedPromise(5, 10),
+    ], 2, 0, false)
+      .on('data', onData)
+      .on('end', () => {
+        const results = onData.mock.calls.map(([data]) => data);
+
+        const idxByArrival = results.reduce((memo, data) => [...memo, data.idx], []);
+        expect(idxByArrival).toEqual([1, 0, 3, 2, 4]);
+
+        const sortedResults = results.sort((a, b) => {
+          if (a.idx > b.idx) {
+            return 1;
+          }
+          if (a.idx < b.idx) {
+            return -1;
+          }
+          return 0;
+        });
+
+        const valuesSortedByIdx = sortedResults.map(({ result }) => result);
+        expect(valuesSortedByIdx).toEqual([1, 2, 3, 4, 5]);
         done();
       });
   });
