@@ -1,20 +1,20 @@
-# Pact
+# Porch
 
 Process **promise-based** tasks in **series** and **parallel**, controlling
 **concurrency** and **throttling**.
 
-[![Build Status](https://travis-ci.com/lupomontero/pact.svg?branch=master)](https://travis-ci.com/lupomontero/pact)
-[![Coverage Status](https://coveralls.io/repos/lupomontero/pact/badge.svg?branch=master)](https://coveralls.io/r/lupomontero/pact?branch=master)
+[![Build Status](https://travis-ci.com/lupomontero/porch.svg?branch=master)](https://travis-ci.com/lupomontero/porch)
+[![Coverage Status](https://coveralls.io/repos/lupomontero/porch/badge.svg?branch=master)](https://coveralls.io/r/lupomontero/porch?branch=master)
 
 ## Installation
 
 ```sh
-npm install lupomontero/pact
+npm install lupomontero/porch
 ```
 
 ## Usage / API
 
-### `Promise pact(tasks, concurrency, interval, failFast)`
+### `Promise porch(tasks, concurrency, interval, failFast)`
 
 #### Arguments
 
@@ -42,10 +42,10 @@ Process each task after the other, sequentially. Each task will wait for the
 previous one to complete. Concurrency set to `1` (one task at a time).
 
 ```js
-const pact = require('pact');
+const porch = require('porch');
 const tasks = users.map(user => () => auth.deleteUser(user.localId);
 
-pact(tasks)
+porch(tasks)
   .then(console.log)
   .catch(console.error);
 ```
@@ -57,7 +57,7 @@ _tasks_ will be processed in batches of 5 _tasks_ each. Each batch waits for the
 previous one to complete and then performs its tasks in parallel.
 
 ```js
-pact(tasks, 5)
+porch(tasks, 5)
   .then(console.log)
   .catch(console.error);
 ```
@@ -67,7 +67,7 @@ pact(tasks, 5)
 Same as example above but adding a 1000ms delay between batches.
 
 ```js
-pact(tasks, 5, 1000)
+porch(tasks, 5, 1000)
   .then(console.log)
   .catch(console.error);
 ```
@@ -80,15 +80,15 @@ will appear as the value/result for the relevant element in the results array
 (failed tasks/promises won't end up in the `catch()` method).
 
 ```js
-pact(tasks, 5, 1000, false)
+porch(tasks, 5, 1000, false)
   .then(console.log)
 ```
 
-### `stream.Readable pact.createStream(tasks, concurrency, interval, failFast)`
+### `stream.Readable porch.createStream(tasks, concurrency, interval, failFast)`
 
 #### Arguments
 
-Same as `pact()`.
+Same as `porch()`.
 
 #### Return value
 
@@ -100,7 +100,7 @@ be emitted as a data event and the stream will operate in `objectMode`.
 ##### Handling each event independently... (old school)
 
 ```js
-pact.createStream(tasks, 5, 1000, false)
+porch.createStream(tasks, 5, 1000, false)
   .on('error', err => console.error('error', err))
   .on('data', data => console.log('data', data))
   .on('end', _ => console.log('ended!'));
@@ -111,19 +111,5 @@ pact.createStream(tasks, 5, 1000, false)
 ```js
 // This example assumes that tasks will resolve to string values so that the
 // resulting stream can be directly piped to stdout.
-pact.createStream(tasks, 5, 1000, false).pipe(process.stdout);
+porch.createStream(tasks, 5, 1000, false).pipe(process.stdout);
 ```
-
-<!--
-### `EventEmitter pact.createEventEmitter(tasks, concurrency, interval, failFast)`
-
-```js
-const { emitter } = require('pact');
-
-emitter(tasks, 5, 1000, false)
-  .on('error', err => console.error('error', err))
-  .on('data', data => console.log('data', data))
-  .on('log', (level, message) => console[level](`${level}: ${message}`))
-  .on('end', _ => console.log('ended!'));
-```
--->

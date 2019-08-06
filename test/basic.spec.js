@@ -1,4 +1,4 @@
-describe('pact (basic - no streams)', () => {
+describe('porch (basic - no streams)', () => {
   beforeAll(() => {
     process.env.PACT_NO_STREAMS = true;
   });
@@ -10,8 +10,8 @@ describe('pact (basic - no streams)', () => {
 
   it('should be a function and NOT have `createStream`', () => {
     // eslint-disable-next-line global-require
-    const pact = require('../');
-    expect(typeof pact).toBe('function');
-    expect(pact.createStream).toBe(undefined);
+    const porch = require('../');
+    expect(typeof porch).toBe('function');
+    expect(porch.createStream).toBe(undefined);
   });
 });

@@ -1,11 +1,11 @@
 const { createDelayedPromise, createFailedDelayedPromise, timed } = require('./testUtils');
-const pact = require('../');
+const porch = require('../');
 
 
-describe('pact', () => {
+describe('porch', () => {
 
   it('should resolve to empy array when empy array of tasks', (done) => {
-    pact([]).then((results) => {
+    porch([]).then((results) => {
       expect(results).toEqual([]);
       done();
     });
@@ -13,11 +13,11 @@ describe('pact', () => {
 
   it('should process tasks in batches by concurrency', (done) => {
     const tasks = ['a', 'b', 'c', 'd', 'e'].map(id => () => createDelayedPromise(id, 100));
-    const timedPact = timed(pact);
+    const timedPorch = timed(porch);
 
     Promise.all(
       [undefined, 1, 2, 3, 4, 5, 10]
-        .map(concurrency => timedPact(tasks, concurrency)),
+        .map(concurrency => timedPorch(tasks, concurrency)),
     ).then((results) => {
       expect(results.map(result => [result[0], Math.round(result[1] / 100)]))
         .toMatchSnapshot();
@@ -27,11 +27,11 @@ describe('pact', () => {
 
   it('should not throttle when interval is not specified', (done) => {
     const tasks = ['a', 'b', 'c', 'd', 'e'].map(id => () => createDelayedPromise(id, 100));
-    const timedPact = timed(pact);
+    const timedPorch = timed(porch);
 
     Promise.all(
       [undefined, 1, 2, 3, 4, 5, 10]
-        .map(concurrency => timedPact(tasks, concurrency)),
+        .map(concurrency => timedPorch(tasks, concurrency)),
     ).then((results) => {
       expect(results.map(result => [result[0], Math.round(result[1] / 100)]))
         .toMatchSnapshot();
@@ -41,11 +41,11 @@ describe('pact', () => {
 
   it('should throttle batches by given interval', (done) => {
     const tasks = ['a', 'b', 'c', 'd', 'e'].map(id => () => createDelayedPromise(id, 100));
-    const timedPact = timed(pact);
+    const timedPorch = timed(porch);
 
     Promise.all(
       [undefined, 1, 2, 3, 4, 5, 10]
-        .map(concurrency => timedPact(tasks, concurrency, 100)),
+        .map(concurrency => timedPorch(tasks, concurrency, 100)),
     ).then((results) => {
       expect(results.map(result => [result[0], Math.round(result[1] / 100)]))
         .toMatchSnapshot();
@@ -59,7 +59,7 @@ describe('pact', () => {
       () => createFailedDelayedPromise('some error!', 100),
       () => createDelayedPromise('zzz', 100),
     ];
-    pact(tasks).catch((err) => {
+    porch(tasks).catch((err) => {
       expect(err.message).toBe('Error: some error!');
       done();
     });
@@ -72,7 +72,7 @@ describe('pact', () => {
       () => createDelayedPromise('zzz', 10),
       () => createFailedDelayedPromise(new TypeError('Foo...'), 10),
     ];
-    pact(tasks, 1, 0, false).then((results) => {
+    porch(tasks, 1, 0, false).then((results) => {
       expect(typeof results[0]).toBe('string');
       expect(results[1] instanceof Error).toBe(true);
       expect(typeof results[2]).toBe('string');
