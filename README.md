@@ -88,7 +88,7 @@ porch(tasks, 5, 1000, false)
 
 #### Arguments
 
-Same as `porch()`.
+Same as [`porch()`](#arguments).
 
 #### Return value
 
