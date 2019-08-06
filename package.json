@@ -9,7 +9,7 @@
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "build:basic": "webpack --define process.env.PACT_NO_STREAMS=true --mode production --entry ./index.js -o ./dist/pact.basic.min.js --output-library pact --output-library-target umd",
     "build:full": "webpack --mode production --entry ./index.js -o ./dist/pact.full.min.js --output-library pact --output-library-target umd",
-    "build": "yarn build:basic && yarn build:full"
+    "build": "npm run build:basic && npm run build:full"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
