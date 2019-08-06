@@ -9,7 +9,7 @@ Process **promise-based** tasks in **series** and **parallel**, controlling
 ## Installation
 
 ```sh
-npm install lupomontero/porch
+npm install porch
 ```
 
 ## Usage / API
