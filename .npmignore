@@ -3,5 +3,6 @@
 .eslintignore
 .eslintrc
 .travis.yml
+coverage/
 examples/
 test/
