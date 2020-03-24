@@ -1,5 +1,5 @@
 const { createDelayedPromise, createFailedDelayedPromise, timed } = require('./testUtils');
-const porch = require('../');
+const porch = require('..');
 
 
 describe('porch', () => {
