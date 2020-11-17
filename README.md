@@ -3,8 +3,8 @@
 Process **promise-based** tasks in **series** and **parallel**, controlling
 **concurrency** and **throttling**.
 
-[![Build Status](https://travis-ci.com/lupomontero/porch.svg?branch=master)](https://travis-ci.com/lupomontero/porch)
-[![Coverage Status](https://coveralls.io/repos/lupomontero/porch/badge.svg?branch=master)](https://coveralls.io/r/lupomontero/porch?branch=master)
+[![Build Status](https://travis-ci.com/lupomontero/porch.svg?branch=main)](https://travis-ci.com/lupomontero/porch)
+[![Coverage Status](https://coveralls.io/repos/lupomontero/porch/badge.svg?branch=main)](https://coveralls.io/r/lupomontero/porch?branch=main)
 
 ## Installation
 
