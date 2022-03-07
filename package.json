@@ -10,7 +10,7 @@
   },
   "scripts": {
     "pretest": "eslint .",
-    "test": "jest --coverage",
+    "test": "jest --coverage --verbose",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "build:basic": "webpack --define process.env.PACT_NO_STREAMS=true --mode production --entry ./index.js -o ./dist/porch.basic.min.js --output-library porch --output-library-target umd",
     "build:full": "webpack --mode production --entry ./index.js -o ./dist/porch.full.min.js --output-library porch --output-library-target umd",
