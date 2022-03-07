@@ -1,7 +1,13 @@
-const splitArrayIntoBatches = require('./lib/splitArrayIntoBatches');
+import splitArrayIntoBatches from './lib/splitArrayIntoBatches.js';
 
+export { default as createStream } from './lib/createStream.js';
 
-module.exports = (tasks, concurrency, interval = 0, failFast = true) => {
+export const createPromise = (
+  tasks,
+  concurrency,
+  interval = 0,
+  failFast = true,
+) => {
   const processBatches = (batches, prevResults = []) => {
     if (!batches.length) {
       return Promise.resolve(prevResults);
@@ -23,9 +29,4 @@ module.exports = (tasks, concurrency, interval = 0, failFast = true) => {
   return processBatches(splitArrayIntoBatches(tasks, concurrency));
 };
 
-
-// Exclude `createStream` method in basic build for browsers.
-if (!process.env.PACT_NO_STREAMS) {
-  // eslint-disable-next-line global-require
-  module.exports.createStream = require('./lib/createStream');
-}
+export default createPromise;

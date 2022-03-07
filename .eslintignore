@@ -1,2 +1,3 @@
 coverage/
 dist/
+webpack.config.js

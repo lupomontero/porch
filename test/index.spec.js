@@ -1,5 +1,9 @@
-const { createDelayedPromise, createFailedDelayedPromise, timed } = require('./testUtils');
-const porch = require('..');
+import {
+  createDelayedPromise,
+  createFailedDelayedPromise,
+  timed,
+} from './testUtils.js';
+import porch from '../index.js';
 
 
 describe('porch', () => {

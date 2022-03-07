@@ -2,7 +2,9 @@
   "name": "porch",
   "description": "Promise Orchestrator: Process promise-based tasks in series and parallel, controlling concurrency and throttling",
   "version": "1.2.0",
-  "main": "./index.js",
+  "type": "module",
+  "exports": "./index.js",
+  "browser": "./dist/porch-browser.min.js",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,9 +14,8 @@
     "pretest": "eslint .",
     "test": "jest --coverage --verbose",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "build:basic": "webpack --define process.env.PACT_NO_STREAMS=true --mode production --entry ./index.js -o ./dist/porch.basic.min.js --output-library porch --output-library-target umd",
-    "build:full": "webpack --mode production --entry ./index.js -o ./dist/porch.full.min.js --output-library porch --output-library-target umd",
-    "build": "npm run build:basic && npm run build:full"
+    "build": "rm -rf dist && webpack --mode production --output-library porch",
+    "changelog": "git log $(git describe --tags --abbrev=0)..HEAD --oneline --format=\"* %h %s (%an)\""
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -28,6 +29,6 @@
     "webpack-cli": "^4.9.2"
   },
   "engines": {
-    "node": ">=12"
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   }
 }

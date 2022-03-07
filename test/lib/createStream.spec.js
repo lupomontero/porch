@@ -1,6 +1,9 @@
-const { Readable } = require('stream');
-const { createDelayedPromise, createFailedDelayedPromise } = require('../testUtils');
-const createStream = require('../../lib/createStream');
+import { Readable } from 'node:stream';
+import {
+  createDelayedPromise,
+  createFailedDelayedPromise,
+} from '../testUtils.js';
+import createStream from '../../lib/createStream.js';
 
 
 describe('createStream', () => {

@@ -1,6 +1,11 @@
 {
   "env": {
+    "es2020": true,
     "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
   },
   "extends": "airbnb-base",
   "rules": {
@@ -23,6 +28,10 @@
         "maxEOF": 1
       }
     ],
-    "no-promise-executor-return": "off"
+    "no-promise-executor-return": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages"
+    ]
   }
 }

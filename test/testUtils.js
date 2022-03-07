@@ -1,9 +1,9 @@
-exports.createDelayedPromise = (val, delay) => new Promise(
+export const createDelayedPromise = (val, delay) => new Promise(
   resolve => setTimeout(() => resolve(val), delay),
 );
 
 
-exports.createFailedDelayedPromise = (err, delay) => new Promise(
+export const createFailedDelayedPromise = (err, delay) => new Promise(
   (resolve, reject) => setTimeout(
     () => reject((err instanceof Error) ? err : new Error(`Error: ${err}`)),
     delay,
@@ -11,5 +11,5 @@ exports.createFailedDelayedPromise = (err, delay) => new Promise(
 );
 
 
-exports.timed = (fn, start = Date.now()) => (...args) => fn(...args)
+export const timed = (fn, start = Date.now()) => (...args) => fn(...args)
   .then(results => [results, Date.now() - start]);
