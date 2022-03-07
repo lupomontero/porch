@@ -2,7 +2,7 @@
 .editorconfig
 .eslintignore
 .eslintrc
-.travis.yml
+.github
 coverage/
 examples/
 test/
