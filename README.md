@@ -4,7 +4,7 @@ Process **promise-based** tasks in **series** and **parallel**, controlling
 **concurrency** and **throttling**.
 
 [![Node.js CI](https://github.com/lupomontero/porch/actions/workflows/node.js.yml/badge.svg)](https://github.com/lupomontero/porch/actions/workflows/node.js.yml)
-[![Coverage Status](https://coveralls.io/repos/lupomontero/porch/badge.svg?branch=main)](https://coveralls.io/r/lupomontero/porch?branch=main)
+[![Coverage Status](https://coveralls.io/repos/lupomontero/porch/badge.svg?branch=main)](https://coveralls.io/github/lupomontero/porch?branch=main)
 
 ## Installation
 
