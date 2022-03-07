@@ -12,6 +12,16 @@ describe('createStream', () => {
     expect(createStream([]) instanceof Readable).toBe(true);
   });
 
+  it('should end without emitting data when no tasks', (done) => {
+    const onData = jest.fn();
+    createStream([])
+      .on('data', onData)
+      .on('end', () => {
+        expect(onData).not.toHaveBeenCalled();
+        done();
+      });
+  });
+
   it('should process tasks in series and emit results as data events', (done) => {
     const results = [];
     createStream([
@@ -90,6 +100,19 @@ describe('createStream', () => {
 
         const valuesSortedByIdx = sortedResults.map(({ result }) => result);
         expect(valuesSortedByIdx).toEqual([1, 2, 3, 4, 5]);
+        done();
+      });
+  });
+
+  it('should not wait until next empty batch to emit end', (done) => {
+    const onData = jest.fn();
+    createStream([
+      () => createDelayedPromise(1, 10),
+    ], 1, 10 * 1000)
+      .on('data', onData)
+      .on('end', () => {
+        expect(onData).toHaveBeenCalledTimes(1);
+        expect(onData).toHaveBeenCalledWith({ idx: 0, result: 1 });
         done();
       });
   });
