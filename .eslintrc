@@ -4,8 +4,25 @@
   },
   "extends": "airbnb-base",
   "rules": {
-    "arrow-parens": [2, "as-needed", { "requireForBlockBody": true }],
-    "function-paren-newline": ["error", "consistent"],
-    "no-multiple-empty-lines": ["error", { "max": 2, "maxBOF": 0, "maxEOF": 1 }]
+    "arrow-parens": [
+      2,
+      "as-needed",
+      {
+        "requireForBlockBody": true
+      }
+    ],
+    "function-paren-newline": [
+      "error",
+      "consistent"
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 2,
+        "maxBOF": 0,
+        "maxEOF": 1
+      }
+    ],
+    "no-promise-executor-return": "off"
   }
 }
