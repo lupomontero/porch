@@ -42,7 +42,8 @@ Process each task after the other, sequentially. Each task will wait for the
 previous one to complete. Concurrency set to `1` (one task at a time).
 
 ```js
-const porch = require('porch');
+import porch from 'porch';
+
 const tasks = users.map(user => () => auth.deleteUser(user.localId);
 
 porch(tasks)
@@ -84,7 +85,7 @@ porch(tasks, 5, 1000, false)
   .then(console.log)
 ```
 
-### `stream.Readable porch.createStream(tasks, concurrency, interval, failFast)`
+### `stream.Readable createStream(tasks, concurrency, interval, failFast)`
 
 #### Arguments
 
@@ -100,7 +101,9 @@ be emitted as a data event and the stream will operate in `objectMode`.
 ##### Handling each event independently... (old school)
 
 ```js
-porch.createStream(tasks, 5, 1000, false)
+import { createStrean } from 'porch';
+
+createStream(tasks, 5, 1000, false)
   .on('error', err => console.error('error', err))
   .on('data', data => console.log('data', data))
   .on('end', _ => console.log('ended!'));
@@ -111,5 +114,5 @@ porch.createStream(tasks, 5, 1000, false)
 ```js
 // This example assumes that tasks will resolve to string values so that the
 // resulting stream can be directly piped to stdout.
-porch.createStream(tasks, 5, 1000, false).pipe(process.stdout);
+createStream(tasks, 5, 1000, false).pipe(process.stdout);
 ```
