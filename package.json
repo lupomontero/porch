@@ -15,7 +15,7 @@
     "test": "jest --coverage --verbose",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "build": "rm -rf dist && webpack --mode production --output-library porch",
-    "changelog": "git log $(git describe --tags --abbrev=0)..HEAD --oneline --format=\"* %h %s (%an)\""
+    "changelog": "git log $(git describe --tags --abbrev=0)..HEAD --oneline --format=\"* %h %s\""
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
