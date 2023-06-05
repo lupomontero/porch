@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`porch should not throttle when interval is not specified 1`] = `
-Array [
-  Array [
-    Array [
+[
+  [
+    [
       "a",
       "b",
       "c",
@@ -12,8 +12,8 @@ Array [
     ],
     5,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -22,8 +22,8 @@ Array [
     ],
     5,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -32,8 +32,8 @@ Array [
     ],
     3,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -42,8 +42,8 @@ Array [
     ],
     2,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -52,8 +52,8 @@ Array [
     ],
     2,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -62,8 +62,8 @@ Array [
     ],
     1,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -76,9 +76,9 @@ Array [
 `;
 
 exports[`porch should process tasks in batches by concurrency 1`] = `
-Array [
-  Array [
-    Array [
+[
+  [
+    [
       "a",
       "b",
       "c",
@@ -87,8 +87,8 @@ Array [
     ],
     5,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -97,8 +97,8 @@ Array [
     ],
     5,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -107,8 +107,8 @@ Array [
     ],
     3,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -117,8 +117,8 @@ Array [
     ],
     2,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -127,8 +127,8 @@ Array [
     ],
     2,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -137,8 +137,8 @@ Array [
     ],
     1,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -151,9 +151,9 @@ Array [
 `;
 
 exports[`porch should throttle batches by given interval 1`] = `
-Array [
-  Array [
-    Array [
+[
+  [
+    [
       "a",
       "b",
       "c",
@@ -162,8 +162,8 @@ Array [
     ],
     9,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -172,8 +172,8 @@ Array [
     ],
     9,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -182,8 +182,8 @@ Array [
     ],
     5,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -192,8 +192,8 @@ Array [
     ],
     3,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -202,8 +202,8 @@ Array [
     ],
     3,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
@@ -212,8 +212,8 @@ Array [
     ],
     1,
   ],
-  Array [
-    Array [
+  [
+    [
       "a",
       "b",
       "c",
