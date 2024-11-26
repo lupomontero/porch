@@ -19,6 +19,9 @@ export default defineConfig({
         replacement: 'node:stream',
       },
     ],
+    coverage: {
+      reporter: ['lcov'],
+    },
   },
   build: {
     target: 'es2015',
