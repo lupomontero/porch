@@ -11,6 +11,15 @@ export default defineConfig({
       },
     ],
   },
+  test: {
+    alias: [
+      // Dont use the polyfill in tests
+      {
+        find: 'node:stream',
+        replacement: 'node:stream',
+      },
+    ],
+  },
   build: {
     target: 'es2015',
     lib: {
