@@ -3,8 +3,14 @@
   "description": "Promise Orchestrator: Process promise-based tasks in series and parallel, controlling concurrency and throttling",
   "version": "2.0.1",
   "type": "module",
-  "exports": "./index.js",
-  "browser": "./dist/porch-browser.min.js",
+  "exports": {
+    ".": {
+      "import": "./dist/porch.mjs",
+      "require": "./dist/porch.cjs"
+    }
+  },
+  "main": "./dist/porch.cjs",
+  "browser": "./dist/porch.umd.cjs",
   "license": "MIT",
   "repository": {
     "type": "git",
